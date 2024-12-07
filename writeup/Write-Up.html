@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Final Project Write-Up</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Write-Up_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Write-Up_files/libs/quarto-html/quarto.js"></script>
+<script src="Write-Up_files/libs/quarto-html/popper.min.js"></script>
+<script src="Write-Up_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Write-Up_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Write-Up_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Write-Up_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Write-Up_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Write-Up_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Write-Up_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#research-question" id="toc-research-question" class="nav-link active" data-scroll-target="#research-question"><span class="toc-section-number">1</span>  Research Question</a></li>
+  <li><a href="#approach-and-methodology" id="toc-approach-and-methodology" class="nav-link" data-scroll-target="#approach-and-methodology"><span class="toc-section-number">2</span>  Approach and Methodology</a>
+  <ul class="collapse">
+  <li><a href="#metrics-and-datasets" id="toc-metrics-and-datasets" class="nav-link" data-scroll-target="#metrics-and-datasets"><span class="toc-section-number">2.0.1</span>  Metrics and Datasets</a></li>
+  <li><a href="#data-cleaning-and-analysis" id="toc-data-cleaning-and-analysis" class="nav-link" data-scroll-target="#data-cleaning-and-analysis"><span class="toc-section-number">2.0.2</span>  Data Cleaning and Analysis</a></li>
+  </ul></li>
+  <li><a href="#policy-implications" id="toc-policy-implications" class="nav-link" data-scroll-target="#policy-implications"><span class="toc-section-number">3</span>  Policy Implications</a></li>
+  <li><a href="#future-work" id="toc-future-work" class="nav-link" data-scroll-target="#future-work"><span class="toc-section-number">4</span>  Future Work</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Final Project Write-Up</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p><strong>Group Members</strong><br>
+1. <strong>Joy Wu</strong>: Data cleaning and Altair plots, GitHub: <code>XiaoXiguaZI</code><br>
+2. <strong>Betsy Shi</strong>: Shiny app, GitHub: <code>BetsyShi00</code></p>
+<section id="research-question" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Research Question</h1>
+<p>Our research investigates the relationship between Global Value Chain (GVC) participation and carbon dioxide (CO2) emissions. Specifically, we explore how GVC participation patterns influence emissions at both country and industry levels, offering insights into global sustainability and policies for emission reduction.</p>
+</section>
+<section id="approach-and-methodology" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Approach and Methodology</h1>
+<section id="metrics-and-datasets" class="level3" data-number="2.0.1">
+<h3 data-number="2.0.1" class="anchored" data-anchor-id="metrics-and-datasets"><span class="header-section-number">2.0.1</span> Metrics and Datasets</h3>
+<section id="key-metrics" class="level4" data-number="2.0.1.1">
+<h4 data-number="2.0.1.1" class="anchored" data-anchor-id="key-metrics"><span class="header-section-number">2.0.1.1</span> 1. Key Metrics</h4>
+<p>We developed five GVC metrics: forward linkage, backward linkage, GVC, GVCS, and GVCC, based on <em>MEASURES OF PARTICIPATION IN GLOBAL VALUE CHAINS AND GLOBAL BUSINESS CYCLES</em> (Wang et al.&nbsp;2017). These metrics decompose GDP at the country-sector level, emphasizing intermediate goods flows. CO2 emissions (CE) represent environmental impacts.</p>
+</section>
+<section id="datasets" class="level4" data-number="2.0.1.2">
+<h4 data-number="2.0.1.2" class="anchored" data-anchor-id="datasets"><span class="header-section-number">2.0.1.2</span> 2. Datasets</h4>
+<p>Two datasets were combined: <a href="http://gvcdb.uibe.edu.cn/gvc.html">GVC participation data</a> and <a href="https://joint-research-centre.ec.europa.eu/scientific-activities-z/economic-environmental-and-social-effects-globalisation_en">CO2 emissions data</a>. The processed data covers 42 countries and 56 industries (2000–2014).</p>
+</section>
+</section>
+<section id="data-cleaning-and-analysis" class="level3" data-number="2.0.2">
+<h3 data-number="2.0.2" class="anchored" data-anchor-id="data-cleaning-and-analysis"><span class="header-section-number">2.0.2</span> Data Cleaning and Analysis</h3>
+<p>We merged GVC metrics with CE using country, year, and industry as keys. After addressing missing values and standardizing industry codes, we visualized GVC patterns using static plots and explored relationships through interactive Shiny visualizations. Choosing proper layouts, plot types and interactions for shiny to convey clear information is the most difficult for us as shiny contains various possibility. And we finally decide using map and scatter plot, and put the year into a slider while metrics as checkbox.</p>
+<section id="static-plots" class="level4" data-number="2.0.2.1">
+<h4 data-number="2.0.2.1" class="anchored" data-anchor-id="static-plots"><span class="header-section-number">2.0.2.1</span> Static Plots</h4>
+<ul>
+<li><p><strong>Figure 1: GVC Participation Trends</strong><br>
+<img src="pictures/figure%201.png" class="img-fluid" style="width:70.0%" alt="GVC Participation Trends"><br>
+Tracks major economies (US, China, Japan) and Russia (2001–2015). GVC participation rose globally until 2011, plateauing post-2012. China showed high GVC participation due to export-driven growth.</p></li>
+<li><p><strong>Figure 2: Global GVC Participation (Geospatial)</strong><br>
+<img src="pictures/figure%202.png" class="img-fluid" style="width:30.0%" alt="Global GVC Participation"><br>
+Maps GVC participation by country, highlighting developed economies (e.g., Western Europe) as hubs for high-value production.</p></li>
+<li><p><strong>Figure 3: Sectoral Participation</strong><br>
+<img src="pictures/figure%203.png" class="img-fluid" style="width:30.0%" alt="Sectoral Participation"> Categorizes industries into agriculture, mining, manufacturing, and services. Agriculture shows low participation; manufacturing exhibits balanced, high participation.</p></li>
+<li><p><strong>Figure 4: Country-Specific Trends</strong><br>
+<img src="pictures/figure%204.png" class="img-fluid" style="width:30.0%" alt="Country-Specific Trends"> Shows GVC metrics vs.&nbsp;CE at the country level for key industries. Manufacturing leads in both metrics and emissions, with China as the global hub.</p></li>
+</ul>
+<p>The static analysis revealed sectoral roles in GVCs but lacked dynamic insights. This limitation was addressed through an interactive Shiny app to explore the GVC-CO2 interplay further.</p>
+</section>
+<section id="shiny-exploration" class="level4" data-number="2.0.2.2">
+<h4 data-number="2.0.2.2" class="anchored" data-anchor-id="shiny-exploration"><span class="header-section-number">2.0.2.2</span> Shiny Exploration</h4>
+<ul>
+<li><p><strong>Global Overview (Page 1):</strong> <img src="pictures/shiny1.png" class="img-fluid" style="width:30.0%" alt="Global Overview"> Geo-map and tables display CO2 emissions, showing concentration in industrialized nations (e.g., USA, China).</p></li>
+<li><p><strong>Nation-Level Analysis (Page 2):</strong> <img src="pictures/shiny2.png" class="img-fluid" style="width:30.0%" alt="Nation-Level Analysis"> Scatter plots reveal suppressive effects of GVCs on emissions, with developed countries better positioned to manage carbon growth.</p></li>
+<li><p><strong>Industry-Level Analysis (Page 3):</strong><br>
+<img src="pictures/shiny3.png" class="img-fluid" style="width:30.0%" alt="Industry-Level Analysis"> Industry-specific scatter plots highlight diverse roles. Manufacturing shows wide variation, reflecting industrial and energy efficiency differences.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="policy-implications" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Policy Implications</h1>
+<p>Promoting sustainable GVCs requires: - <strong>Low-Carbon GVCs:</strong> Incentivizing clean technologies and efficient processes. - <strong>Industry Standards:</strong> Tailoring policies for high-emission sectors like manufacturing. - <strong>Global Collaboration:</strong> Fostering agreements on carbon accountability in supply chains.</p>
+</section>
+<section id="future-work" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Future Work</h1>
+<p>Future research could involve granular data for regional dynamics, dynamic modeling under policy scenarios, and longitudinal studies to account for emerging trends and post-COVID shifts.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
