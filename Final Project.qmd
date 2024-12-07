@@ -1,0 +1,178 @@
+---
+title: "Final Project"
+author: "Betsy Shi & Joy Wu"
+date: "Dec 4"
+format: 
+  pdf:
+    include-in-header: 
+       text: |
+         \usepackage{fvextra}
+         \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+include-before-body:
+  text: |
+    \RecustomVerbatimEnvironment{verbatim}{Verbatim}{
+      showspaces = false,
+      showtabs = false,
+      breaksymbolleft={},
+      breaklines
+    }
+---
+
+```{python}
+import pandas as pd
+import altair as alt
+import geopandas as gpd
+import matplotlib.pyplot as plt
+```
+
+```{python}
+filepath = "initial.dta"
+df_initial = pd.read_stata(filepath)
+
+numeric_columns = ['CE', 'f', 'fs', 'fc', 'b', 'bs', 'bc', 'gvc', 'gvcc', 'gvcs', "GDP"]
+for col in numeric_columns:
+    df_initial[col] = pd.to_numeric(df_initial[col], errors='coerce')
+
+df_initial = df_initial.fillna(0)
+
+# ce/gdp
+df_initial["ce_per_gdp"] = df_initial["CE"] / df_initial["GDP"]
+
+df_initial.loc[df_initial["GDP"] == 0, "ce_per_gdp"] = pd.NA
+df_initial = df_initial.dropna(subset=["ce_per_gdp"])
+```
+
+page1 data
+```{python}
+shapefile_path = 'data/world-administrative-boundaries/world-administrative-boundaries.shp'
+world = gpd.read_file(shapefile_path)
+print(world.head())
+```
+
+page2 data
+```{python}
+# total ce/gdp
+total_ce_gdp = df_initial.groupby(['country', 'year'])[['CE', 'GDP']].sum().reset_index()
+total_ce_gdp['total_ce_per_gdp'] = total_ce_gdp['CE'] / total_ce_gdp['GDP']
+
+# average gvc, gvcs, gvcc, f, b
+average_data = df_initial.groupby(['country', 'year']).agg({
+    'gvc': 'mean',
+    'gvcs': 'mean',
+    'gvcc': 'mean',
+    'f': 'mean',
+    'b': 'mean'
+}).reset_index()
+
+average_data.rename(columns={
+    'gvc': 'average_gvc',
+    'gvcs': 'average_gvcs',
+    'gvcc': 'average_gvcc',
+    'f': 'average_f',
+    'b': 'average_b'
+}, inplace=True)
+
+processed_data = pd.merge(total_ce_gdp, average_data, on=['country', 'year'], how='left')
+
+processed_data.to_csv('data/processed_data.csv', index=False)
+```
+
+page2 try
+```{python}
+path = "data/processed_data.csv"
+df = pd.read_csv(path)
+
+x1_min, x1_max = df["average_f"].min(), df["average_f"].max()
+x2_min, x2_max = df["average_b"].min(), df["average_b"].max()
+print("X-axis range (GVC Participation):", x1_min, x1_max)
+print("X-axis range (GVC Participation):", x2_min, x2_max)
+
+selected_countries = ["USA", "CHN", "JPN", "RUS"]
+participation_type = "average_f"
+
+filtered_data = df[df['country'].isin(selected_countries)]
+
+scatter = alt.Chart(filtered_data).mark_circle(size=60).encode(
+    x=alt.X(participation_type, title="GVC Participation"),
+    y=alt.Y('total_ce_per_gdp:Q', title="Total CO2 Emission per GDP"),
+    color=alt.Color('country:N', legend=alt.Legend(title="Country")),
+    tooltip=['year', 'country', participation_type, 'total_ce_per_gdp']
+)
+
+regression = scatter.transform_loess(
+    participation_type, 'total_ce_per_gdp', groupby=['country']
+).mark_line().encode(
+    color=alt.Color('country:N', legend=None)
+)
+
+chart = (scatter + regression).properties(
+    title="GVC Participation vs CO2 Efficiency",
+    width=600,
+    height=400
+)
+chart.show()
+```
+
+page3 data
+```{python}
+def classify_industry(industry):
+    if industry in [f'c{i:02d}' for i in range(1, 4)]:
+        return 'Agriculture'
+    elif industry in ['c04']:
+        return 'Mining'
+    elif industry in [f'c{i:02d}' for i in range(5, 24)]:
+        return 'Manufacturing'
+    elif industry in [f'c{i:02d}' for i in range(24, 57)]:
+        return 'Service'
+    else:
+        return 'Other'
+
+df_initial['classification'] = df_initial['industry'].apply(classify_industry)
+
+aggregated_data = df_initial.groupby(['country', 'classification', 'year']).agg({
+    'CE': 'sum',  # Sum of carbon emissions
+    'f': 'mean',  # Average forward participation
+    'b': 'mean',  # Average backward participation
+    'gvcs': 'mean',  # Average simple GVC participation
+    'gvcc': 'mean',  # Average complex GVC participation
+    'ce_per_gdp': 'mean'  # Average CO2 emissions per GDP
+}).reset_index()
+
+# Save to a new file (optional)
+aggregated_data.to_csv('data/aggregated_data.csv', index=False)
+```
+
+```{python}
+def generate_scatter_plot(classification, year, participation_type):
+    # Filter data for the given classification and year
+    filtered_data = aggregated_data[
+        (aggregated_data['classification'] == classification) & 
+        (aggregated_data['year'] == year)
+    ]
+    
+    # Create scatter plot
+    scatter = alt.Chart(filtered_data).mark_circle(size=60).encode(
+        x=alt.X(participation_type, title="Participation", scale=alt.Scale(domain=[0.0, 1.0])),
+        y=alt.Y('CE:Q', title="Total CO2 Emissions"),
+        color=alt.Color('classification:N', legend=alt.Legend(title="Classification")),
+        tooltip=['country', participation_type, 'CE']
+    ).properties(
+        title=f"{classification} Classification",
+        width=300,
+        height=300
+    )
+
+    return scatter
+
+year = 2000
+participation_type = "f"  # Forward participation
+
+# Generate scatter plots for each classification
+agriculture_plot = generate_scatter_plot("Agriculture", year, participation_type)
+manufacturing_plot = generate_scatter_plot("Manufacturing", year, participation_type)
+service_plot = generate_scatter_plot("Service", year, participation_type)
+mining_plot = generate_scatter_plot("Mining", year, participation_type)
+
+# Display plots
+(agriculture_plot & manufacturing_plot) | (service_plot & mining_plot)
+```
