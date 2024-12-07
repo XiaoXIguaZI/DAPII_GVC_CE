@@ -1,1 +1,2 @@
-*.py
+src/processing.py
+!*.py
