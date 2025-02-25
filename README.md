@@ -27,22 +27,22 @@ We merged **GVC participation data** and **CO2 emissions data**, covering **42 c
 
 ## 📈 Data Analysis and Visualization
 ### 1. Static Plots
-- **Figure 1: GVC Participation Trends** – Tracks major economies (US, China, Japan, Russia) from **2001–2015**. Global GVC participation **rose until 2011** but **plateaued post-2012**.
-- **Figure 2: Global GVC Participation (Geospatial)** – Highlights developed economies (e.g., **Western Europe**) as **hubs for high-value production**.
-- **Figure 3: Sectoral Participation** – Categorizes industries into **agriculture, mining, manufacturing, and services**. Manufacturing exhibits **balanced, high participation**, while agriculture remains **low**.
-- **Figure 4: Country-Specific Trends** – Shows **GVC metrics vs. CO2 emissions**. **China leads** in both metrics and emissions, positioning itself as a **global manufacturing hub**.
+- **Figure 1: GVC Participation Trends** – Tracks major economies (US, China, Japan, Russia) from 2001–2015. Global GVC participation rose until 2011 but plateaued post-2012.
+- **Figure 2: Global GVC Participation (Geospatial)** – Highlights developed economies (e.g., Western Europe) as hubs for high-value production.
+- **Figure 3: Sectoral Participation** – Categorizes industries into agriculture, mining, manufacturing, and services. Manufacturing exhibits balanced, high participation, while agriculture remains low.
+- **Figure 4: Country-Specific Trends** – Shows GVC metrics vs. CO2 emissions. China leads in both metrics and emissions, positioning itself as a global manufacturing hub.
 
 ### 2. Shiny App Exploration
 We built an **interactive Shiny dashboard** to provide **dynamic insights**:
-- ** Page 1: Global Overview** – Geo-maps and tables display **CO2 emissions concentration** in industrialized nations (e.g., USA, China).
-- ** Page 2: Nation-Level Analysis** – Scatter plots reveal that **developed countries manage carbon growth better** despite high GVC participation.
-- ** Page 3: Industry-Level Analysis** – Industry-specific scatter plots highlight **manufacturing variability**, reflecting **efficiency differences**.
+- **Page 1: Global Overview** – Geo-maps and tables display CO2 emissions concentration in industrialized nations (e.g., USA, China).
+- **Page 2: Nation-Level Analysis** – Scatter plots reveal that developed countries manage carbon growth better despite high GVC participation.
+- **Page 3: Industry-Level Analysis** – Industry-specific scatter plots highlight manufacturing variability, reflecting efficiency differences.
 
 ## 🌍 Policy Implications
 Promoting **sustainable GVCs** requires:
-- ** Low-Carbon GVCs**: Incentivizing **clean technologies** & efficient processes.
-- ** Industry Standards**: Tailoring policies for **high-emission sectors** like manufacturing.
-- ** Global Collaboration**: Strengthening **carbon accountability agreements** across supply chains.
+- **Low-Carbon GVCs**: Incentivizing clean technologies & efficient processes.
+- **Industry Standards**: Tailoring policies for high-emission sectors like manufacturing.
+- **Global Collaboration**: Strengthening carbon accountability agreements across supply chains.
 
 ## 🚀 Future Work
 - Granular regional data analysis.
