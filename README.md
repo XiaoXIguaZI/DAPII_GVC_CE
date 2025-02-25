@@ -4,6 +4,15 @@
 - **Joy Wu**: Data Cleaning & Altair Plots ([GitHub: XiaoXiguaZI](https://github.com/XiaoXiguaZI))
 - **Betsy Shi**: Shiny App Development ([GitHub: BetsyShi00](https://github.com/BetsyShi00))
 
+## 📂 Project Structure
+
+- **src/** → Data processing scripts.
+- **shiny/basic-navigation/** → Shiny interactive window for result visualization.
+- **data/** → Contains:
+  - `data_ov.dta` → Original dataset processed by JW using Stata.
+  - GIS world map package for visualization.
+- **writeup/** → Stores generated image results and analysis reports.
+
 ## 🎯 Research Question
 Our research explores the relationship between **Global Value Chain (GVC) participation** and **carbon dioxide (CO2) emissions**. We analyze how GVC patterns influence emissions at both **country** and **industry** levels, providing insights for **global sustainability** and **policy recommendations** on emission reduction.
 
